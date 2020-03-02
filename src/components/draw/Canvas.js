@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import PostButton from './PostButton';
+
 
 
 class Canvas extends Component {
@@ -12,6 +14,8 @@ class Canvas extends Component {
       // stores the coordinates of the last event
       x: 0,
       y: 0,
+      // stores the drawing as a blob object
+      drawingBlob: {},
     }
   }
 
@@ -31,19 +35,15 @@ class Canvas extends Component {
 
   // start drawing
   startDrawing = (e) => {
-    console.log('start drawing', e);
     this.setState ({
       isDrawing: true,
       x: e.nativeEvent.offsetX,
       y: e.nativeEvent.offsetY,
-    }, () => {
-      console.log(this.state.lastX, this.state.lastY);
     })
   }
 
   // drawing 
   draw = (e) => {
-    console.log('drawing');
     const canvas = this.refs.canvas;
     // sets up canvas context
     const ctx = canvas.getContext('2d');
@@ -66,6 +66,8 @@ class Canvas extends Component {
         x: e.nativeEvent.offsetX,
         y: e.nativeEvent.offsetY,
       })
+
+      this.captureDrawing();
     }
   }
 
@@ -76,17 +78,30 @@ class Canvas extends Component {
     })
   }
 
-  click = () => {
-    console.log('click');
+  // as the user is drawing, continuously convert the current drawing into a base64 string (plain text representation of an image) and save it in the component state
+  captureDrawing = () => {
+    const canvas = this.refs.canvas;
+
+    // convert the path on the canvas into the base64 string
+    const blobUrl = canvas.toDataURL();
+
+    // the base64 string is pushed into the component's state
+    this.setState({
+      drawingBlob: blobUrl,
+    })
   }
 
   render() {
       return (
-        <canvas 
+        <div>
+          <canvas 
           ref='canvas' 
           width='500' 
           height='500'
           onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing}></canvas>
+          <PostButton userDrawing={this.state.drawingBlob}/>
+        </div>
+        
       );
   }
 }

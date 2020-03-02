@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 
 // initialize firebase
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB7RHaKc0W2HjhoCLYK_k8oddFYSTcfYYc",
   authDomain: "metaphor-b5672.firebaseapp.com",
@@ -12,3 +13,6 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+
+export default firebase;

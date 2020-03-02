@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Canvas from './components/Canvas';
+import Draw from './components/draw/Draw';
+import Gallery from './components/gallery/Gallery';
+
+
 
 // APP
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Canvas />
+        <Draw />
+        <Gallery />
       </div>
     );
   }
