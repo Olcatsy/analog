@@ -78,7 +78,7 @@ class Canvas extends Component {
     })
   }
 
-  // as the user is drawing, continuously convert the current drawing into a base64 string (plain text representation of an image) and save it in the component state
+  // as the user is drawing,   continuously convert the current drawing into a base64 string (plain text representation of an image) and save it in the component state
   captureDrawing = () => {
     const canvas = this.refs.canvas;
 
