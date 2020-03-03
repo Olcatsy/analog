@@ -12,7 +12,7 @@ class Draw extends Component {
       userDrawing: {},
       wordPrompts: ["Anger", "Anxiety", 
         "Tranquility", "Depression", "Soft", "Chaos", "Order", "Joy", "Sickness", "Energy", "Death", "Love", "Dream", "Fragility", "Growth", "Loneliness", "Movement", "Shock", "Fatigue"],
-        chosenPrompt: "",
+      chosenPrompt: "",
     }
   }
 
@@ -25,12 +25,16 @@ class Draw extends Component {
     })
   }
 
+  componentDidMount() {
+    this.randomizePrompts();
+  }
+
   render() {
       return (
         <div className="draw">
-          <button onClick={this.randomizePrompts}>Get a prompt</button>
+          {/* <button onClick={this.props.randomizePrompts}>Get a prompt</button> */}
           <p className="prompt">Your prompt is <span>{this.state.chosenPrompt}</span>.</p>
-          <Canvas chosenPrompt={this.state.chosenPrompt}/>
+          <Canvas chosenPrompt={this.props.chosenPrompt}/>
         </div>
       );
   }

@@ -15,7 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      currentPage: 'home',
+      currentPage: "home",
     }
   }
 
@@ -26,6 +26,17 @@ class App extends Component {
     })
   }
 
+  // selects a random prompt for the user to draw
+  randomizePrompts = () => {
+    // get a random index from the wordPrompts array
+    const randomIndex = Math.floor(Math.random() * (this.state.wordPrompts.length));
+
+    this.setState({
+      chosenPrompt: this.state.wordPrompts[randomIndex],
+    })
+  }
+
+  
 
   render() {
     let pageToDisplay;
@@ -34,7 +45,7 @@ class App extends Component {
     if (this.state.currentPage === "home") {
       pageToDisplay = <Home />
     } else if (this.state.currentPage === "draw") {
-      pageToDisplay = <Draw />;
+      pageToDisplay = <Draw chosenPrompt={this.state.chosenPrompt}/>;
     } else if (this.state.currentPage === "gallery") {
       pageToDisplay = <Gallery />;
     } 

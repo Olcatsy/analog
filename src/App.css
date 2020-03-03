@@ -30,6 +30,9 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
   
   /* page padding */
   --pagePadding: 60px 0;
+
+  /* transition */
+  --transition: all 0.2s ease;
 }
 
 
@@ -103,6 +106,7 @@ button {
   text-transform: uppercase;
   padding: 10px 20px;
   font-family: 'Oxanium', sans-serif;
+  transition: var(--transition);
 }
 /* END OF GENERAL STYLES */
 
@@ -125,7 +129,7 @@ h1 {
   letter-spacing: 2px;
   font-weight: 600;
   font-size: calc(3.5rem + 2vw);
-  filter: drop-shadow(3px 3px 0 var(--accent1)) drop-shadow(-2px -2px 0 var(--accent2));
+  filter: drop-shadow(3px 3px 0 var(--accent1)) drop-shadow(-3px -2px 0 var(--accent2));
 }
 
 nav ul {
@@ -139,6 +143,7 @@ nav ul {
   letter-spacing: 1px;
   padding: 10px 10px 5px;
   margin: 0 20px;
+  transition: var(--transition);
 }
 
   .navButton.homeButton:hover {
@@ -208,6 +213,9 @@ nav ul {
   top: 10px;
   padding: 15px 30px;
   font-size: 2.2rem;
+  width: max-content;
+  position: relative;
+  transform: translate(-70%, 50%);
 }
 
 .prompt span {
@@ -235,10 +243,43 @@ nav ul {
 .userDrawing img {
   background-color: white;
 }
+
+.userDrawing p {
+  background-color: var(--secondary);
+  width: max-content;
+  padding: 10px 20px;
+  position: relative;
+  transform: translate(-10%, -50%) ;
+}
 /* END OF GALLERY STYLES */
 
 
 
 /* FOOTER STYLES */
+footer {
+  position: fixed;
+  top: calc(10vh + 60px);
+}
 
+footer li {
+  margin: 20px 10px;
+}
+
+footer a {  
+  background-color: var(--accent2);
+  color: white;
+  font-size: 2rem;
+  border-radius: 50%;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+}
+  footer a:hover,
+  footer a:focus {
+    transform: scale(1.1);
+  }
 /* END OF FOOTER STYLES */
