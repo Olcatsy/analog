@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Header from './components/Header';
 import Home from './components/Home';
 import Draw from './components/draw/Draw';
 import Gallery from './components/Gallery';
@@ -20,7 +21,7 @@ class App extends Component {
   }
 
   // tells the component which page to render (draw or gallery) when nav buttons are clicked
-  navChangePage = (e) => {
+  changePage = (e) => {
     this.setState ({
       currentPage: e.target.value,
     })
@@ -55,24 +56,7 @@ class App extends Component {
       <div className="App">
 
         {/* HEADER */}
-        <header>
-          <div className="wrapper flexParent">
-
-            {/* TITLE */}
-            <h1>Metaphor</h1>
-
-            {/* NAV */}
-            <nav aria-label="navigation">
-
-              <ul>
-                <li> <button className="navButton homeButton" value="home" onClick={this.navChangePage}>Home</button></li>
-                <li> <button className="navButton drawButton" value="draw" onClick={this.navChangePage}>Draw</button></li>
-                <li> <button className="navButton galleryButton" value="gallery" onClick={this.navChangePage}>Gallery</button></li>
-              </ul>
-
-            </nav>
-          </div>
-        </header>
+        <Header changePage={this.changePage}/>
         {/* END OF HEADER */}
 
 
