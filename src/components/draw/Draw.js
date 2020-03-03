@@ -30,7 +30,7 @@ class Draw extends Component {
         <div className="draw">
           <button onClick={this.randomizePrompts}>Get a prompt</button>
           <p className="prompt">Your prompt is <span>{this.state.chosenPrompt}</span>.</p>
-          <Canvas />
+          <Canvas chosenPrompt={this.state.chosenPrompt}/>
         </div>
       );
   }

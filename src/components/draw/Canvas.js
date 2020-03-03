@@ -93,13 +93,15 @@ class Canvas extends Component {
 
   render() {
       return (
-        <div>
-          <canvas 
+        <div className="canvasContainer">
+
+          <canvas className="canvas"
           ref='canvas' 
           width='500' 
           height='500'
           onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing}></canvas>
-          <PostButton userDrawing={this.state.drawingBlob}/>
+          
+          <PostButton userDrawing={this.state.drawingBlob} chosenPrompt={this.props.chosenPrompt}/>
         </div>
         
       );

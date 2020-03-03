@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from '../../firebase';
+import firebase from '../firebase';
 
 // retrieve image strings from the database and store it in an array
 // loop through the array of image strings, and append an img element to the page, with the strings as their url's
@@ -38,11 +38,18 @@ class Gallery extends Component {
   render() {
     return (
       <div className="gallery">
-        {this.state.drawings.map( (item, i) => {
-          return (
-            <img src={item} alt="" key={i}></img>
-          )
-        })}
+        <div className="galleryGrid">
+
+          {this.state.drawings.map( (item, i) => {
+            return (
+              <div className="userDrawing">
+                <img src={item.imgString} alt={item.prompt} key={i}></img>
+                <p>{item.prompt}</p>
+              </div>
+            )
+          })}
+
+        </div>
       </div>
     );
   }

@@ -5,8 +5,6 @@ import firebase from '../../firebase';
 // pushes the blob into the database
 // shows a confirmation that the drawing was posted
 
-
-// DO I NEED A CLASS BASED COMPONENT HERE?
 class PostButton extends Component {
 
   pushToDb = (e) => {
@@ -16,14 +14,18 @@ class PostButton extends Component {
     const dbRef = firebase.database().ref();
 
     // push the drawing into the database
-    dbRef.push(this.props.userDrawing);
+    dbRef.push({
+      prompt: this.props.chosenPrompt,
+      imgString: this.props.userDrawing,
+    });
 
     // display a success message
   }
 
   render() {
+    console.log("chosen prompt was", this.props.chosenPrompt);
       return (
-          <button className="postButton" onClick={this.pushToDb}>Post</button>
+          <button className="postButton yellowButton" onClick={this.pushToDb}>Post</button>
       );
   }
 }
