@@ -9,7 +9,7 @@ class Header extends Component {
         <div className="wrapper flexParent">
 
           {/* TITLE */}
-          <h1>Metaphor</h1>
+          <h1>Analog</h1>
 
           {/* NAV */}
           <nav aria-label="navigation">

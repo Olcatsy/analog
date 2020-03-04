@@ -44,9 +44,9 @@ class App extends Component {
 
     // nav functionality
     if (this.state.currentPage === "home") {
-      pageToDisplay = <Home />
+      pageToDisplay = <Home startDrawing={this.changePage}/>
     } else if (this.state.currentPage === "draw") {
-      pageToDisplay = <Draw chosenPrompt={this.state.chosenPrompt}/>;
+      pageToDisplay = <Draw />;
     } else if (this.state.currentPage === "gallery") {
       pageToDisplay = <Gallery />;
     } 

@@ -38,8 +38,10 @@ class Gallery extends Component {
   render() {
     return (
       <div className="gallery">
-        <div className="galleryGrid">
+        <p>It’s really interesting to compare your analog drawings with the ones done by other people. Do their renditions of the same concept look like yours? You might see some similarities, yet every drawing has its own unique characteristics. Although we all experience roughly the same emotions, the intensity and quality of these emotions is different between individuals. <span>Your drawing makes your emotions visible.</span></p>
 
+        <div className="galleryGrid">
+      
           {this.state.drawings.map( (item, i) => {
             return (
               <div className="userDrawing">

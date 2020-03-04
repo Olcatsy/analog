@@ -6,6 +6,14 @@ import firebase from '../../firebase';
 // shows a confirmation that the drawing was posted
 
 class PostButton extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showModal: false,
+      modalMessage: "",
+    }
+  }
 
   pushToDb = (e) => {
     e.preventDefault();
@@ -13,20 +21,50 @@ class PostButton extends Component {
     // database reference
     const dbRef = firebase.database().ref();
 
-    // push the drawing into the database
-    dbRef.push({
-      prompt: this.props.chosenPrompt,
-      imgString: this.props.userDrawing,
-    });
+    // if user drew anything, it will get pushed to the database and a success modal will be shown. If not, the modal will prompt the user to draw something
+    if (this.props.userDrawing) {
+      // push the drawing into the database
+      dbRef.push({
+        prompt: this.props.chosenPrompt,
+        imgString: this.props.userDrawing,
+      });
 
-    // display a success message
+      // display a success message
+      this.setState ({
+        modalMessage: "Thank you for posting!",
+      })
+    } else {
+      this.setState({
+        modalMessage: "Please draw something!",
+      })
+    }
+
+    // shows the modal
+    this.setState({
+      showModal: true,
+    })
+
+    // will hide the modal after 3s
+    setTimeout(() => {
+      this.setState({
+        showModal: false,
+      })
+    }, 3000)
   }
 
   render() {
-    console.log("chosen prompt was", this.props.chosenPrompt);
-      return (
-          <button className="postButton yellowButton" onClick={this.pushToDb}>Post</button>
-      );
+    return (
+      <div className="post">
+        <button className="postButton yellowButton" onClick={this.pushToDb}>Post</button>
+
+        {
+          this.state.showModal 
+          ? <div className="postModal">{this.state.modalMessage}</div>
+          : null
+        }
+      </div>
+      
+    )
   }
 }
 

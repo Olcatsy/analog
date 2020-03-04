@@ -33,6 +33,9 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
   /* transition */
   --transition: all 0.2s ease;
+
+  /* copy margins */
+  --copyMargin: 20px 0;
 }
 
 
@@ -40,16 +43,21 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 /* BASE STYLES */
 html {
-    font-size: 62.5%; /* 10px */
+  font-size: 62.5%; /* 10px */
+  
 }
 
 body {
-    font-size: 1.8rem;
-    position: relative;
-    color: var(--copy);
-    line-height: 1.5;
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--primary);
+  min-height: 100vh;
+  font-size: 1.8rem;
+  position: relative;
+  color: var(--copy);
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--primary);
+  background-image: linear-gradient(to bottom right, var(--primary),  var(--secondary));
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /* END OF BASE STYLES */
 
@@ -106,8 +114,13 @@ button {
   text-transform: uppercase;
   padding: 10px 20px;
   font-family: 'Oxanium', sans-serif;
+  border: 3px solid transparent;
   transition: var(--transition);
 }
+  .yellowButton:hover,
+  .yellowButton:focus {
+    background-color: var(--accent1);
+  }
 /* END OF GENERAL STYLES */
 
 
@@ -115,6 +128,7 @@ button {
 /* HEADER STYLES */
 header {
   height: 10vh;
+  padding-top: 10px;
 }
 
 header .flexParent {
@@ -146,17 +160,20 @@ nav ul {
   transition: var(--transition);
 }
 
-  .navButton.homeButton:hover {
+  .navButton.homeButton:hover,
+  .navButton.homeButton:focus {
     color: var(--accent1);
     border-bottom-color: var(--accent1);
   }
 
-  .navButton.drawButton:hover {
+  .navButton.drawButton:hover,
+  .navButton.drawButton:focus {
     color: var(--accent2);
     border-bottom-color: var(--accent2);
   }
 
-  .navButton.galleryButton:hover {
+  .navButton.galleryButton:hover, 
+  .navButton.galleryButton:focus {
     color: var(--accent3);
     border-bottom-color: var(--accent3);
   }
@@ -166,20 +183,41 @@ nav ul {
 
 /* HOME STYLES */
 .homeScreen {
-  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: var(--pagePadding);
+  
+}
+
+.homeContainer {
+  width: 75%;
 }
 
 .homeScreen p {
-  margin: 20px;
+  margin: var(--copyMargin);
+}
+
+.homeScreen span {
+  color: var(--accent1);
 }
 
 .startButton {
   display: block;
   margin: 0 auto;
 }
+
+.smallCopy {
+  font-size: 1.5rem;
+}
+
+.smallCopy a{
+  color: var(--accent2);
+}
+  .smallCopy a:hover,
+  .smallCopy a:focus {
+    text-decoration: underline;
+  }
 
   
 /* END OF HOME STYLES */
@@ -192,30 +230,42 @@ nav ul {
   text-align: center;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
 }
 
-.canvasContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.drawCopy {
+  text-align: start;
+  width: 40%;
+  margin-left: 60px;
 }
 
-.canvas {
-  background: white;
-  margin: 20px 0;
+.drawCopy p {
+  margin: var(--copyMargin);
+}
+
+.drawCopy p::before {
+  content: "\2022"; 
+  color: var(--accent2); /* Change the color */
+  font-weight: bold; 
+  display: inline-block;
+  width: 1em; 
+  margin-left: -1em;
+}
+
+.canvasOuterContainer {
+  position: relative;
 }
 
 .prompt {
   background-color: var(--secondary);
-  position: relative;
+  position: absolute;
   top: 10px;
   padding: 15px 30px;
   font-size: 2.2rem;
   width: max-content;
-  position: relative;
-  transform: translate(-70%, 50%);
+  transform: translate(-10%, -10%);
 }
 
 .prompt span {
@@ -223,7 +273,39 @@ nav ul {
   text-transform: uppercase;
 }
 
-.postButton {
+.canvasInnerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canvas {
+  background: white;
+  margin: 40px 0 20px;
+}
+
+.canvasButtons {
+  display: flex;
+}
+
+.canvasButtons button {
+  margin: 0 10px;
+}
+
+.post {
+  position: relative;
+}
+
+.postModal {
+  position: absolute;
+  background: var(--secondary);
+  color: var(--accent3);
+  width: max-content;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: -100%;
+  padding: 10px 20px;
+  transition: var(--transition);
 }
 /* END OF DRAW STYLES */
 
@@ -234,10 +316,19 @@ nav ul {
   padding: var(--pagePadding);
 }
 
+.gallery p {
+  margin: var(--copyMargin);
+}
+
+.gallery span {
+  color: var(--accent3)
+}
+
 .galleryGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 40px;
+  margin-top: 50px;
 }
 
 .userDrawing img {
@@ -261,6 +352,11 @@ footer {
   top: calc(10vh + 60px);
 }
 
+footer ul {
+  display: flex;
+  flex-direction: column;
+}
+
 footer li {
   margin: 20px 10px;
 }
@@ -270,7 +366,7 @@ footer a {
   color: white;
   font-size: 2rem;
   border-radius: 50%;
-  padding: 10px;
+  padding: 15px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -283,3 +379,121 @@ footer a {
     transform: scale(1.1);
   }
 /* END OF FOOTER STYLES */
+
+
+/* MEDIA QUERIES */
+
+/* small tablet */
+@media (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+  }
+
+
+
+  /* HEADER */
+  header {
+    height: initial;
+  }
+
+  header .flexParent {
+    flex-direction: column;
+  }
+
+  nav {
+    font-size: 2.5rem;
+  }
+
+
+  /* HOME */
+  .homeScreen p {
+    text-align: justify;
+  }
+
+  .homeContainer {
+    width: 100%;
+  }
+
+
+  /* DRAW */
+  .draw {
+    flex-direction: column;
+  }
+
+  .canvasOuterContainer {
+    margin-top: 40px;
+  }
+
+  .prompt {
+    transform: initial;
+  }
+
+  .drawCopy {
+    width: 100%;
+    margin: 60px 20px 0;
+    text-align: justify;
+  }
+
+  /* GALLERY */
+  .gallery p {
+    text-align: justify;
+  }
+
+
+  /* FOOTER */
+   footer {
+    position: static;
+  }
+
+  footer ul{
+    flex-direction: row;
+    justify-content: center;
+    
+  } 
+
+  footer a {
+    padding: 15px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+/* mobile */
+@media (max-width: 480px) {
+  .wrapper {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  /* HEADER */
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navButton {
+    font-size: 2.5rem;
+    margin: 10px;
+    padding: 10px;
+  }
+  .navButton.homeButton {
+    color: var(--accent1);
+    border-bottom-color: var(--accent1);
+  }
+  .navButton.drawButton {
+    color: var(--accent2);
+    border-bottom-color: var(--accent2);
+  }
+  .navButton.galleryButton {
+    color: var(--accent3);
+    border-bottom-color: var(--accent3);
+  }
+
+  /* HOME */
+  .homeScreen {
+    height: initial;
+    display: block;
+    padding: 50px 0;
+  }
+}

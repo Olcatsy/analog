@@ -14,8 +14,8 @@ class Canvas extends Component {
       // stores the coordinates of the last event
       x: 0,
       y: 0,
-      // stores the drawing as a blob object
-      drawingBlob: {},
+      // stores the drawing as a base64 string
+      drawingStr: "",
     }
   }
 
@@ -83,28 +83,41 @@ class Canvas extends Component {
     const canvas = this.refs.canvas;
 
     // convert the path on the canvas into the base64 string
-    const blobUrl = canvas.toDataURL();
+    const drawingUrl = canvas.toDataURL();
 
     // the base64 string is pushed into the component's state
     this.setState({
-      drawingBlob: blobUrl,
+      drawingStr: drawingUrl,
+    })
+  }
+
+  // clears the canvas and resets drawing string in the component state
+  clear = () => {
+    const canvas = this.refs.canvas;
+    const ctx = canvas.getContext('2d');
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    this.setState ({
+      drawingStr: "",
     })
   }
 
   render() {
-      return (
-        <div className="canvasContainer">
+    return (
+      <div className="canvasInnerContainer">
 
-          <canvas className="canvas"
-          ref='canvas' 
-          width='500' 
-          height='500'
-          onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing}></canvas>
-          
-          <PostButton userDrawing={this.state.drawingBlob} chosenPrompt={this.props.chosenPrompt}/>
-        </div>
+        <canvas className="canvas"
+        ref='canvas' onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing} width="500" height="500"></canvas>
         
-      );
+        <div className="canvasButtons">
+
+          <button className="yellowButton" onClick={this.clear}>Clear</button>
+          
+          <PostButton userDrawing={this.state.drawingStr} chosenPrompt={this.props.chosenPrompt}/>
+        </div>
+      </div>
+    );
   }
 }
 
