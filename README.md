@@ -9,9 +9,13 @@ This app is heavily inspired by [Betty Edwards'](https://www.drawright.com/) boo
 
 ## Things to add
 *Brush sizes
+
 *Brush colors
+
 *Ability to filter by prompt word
+
 *Ability to save drawing locally
+
 *Ability to add a username when sharing the drawing in the gallery
 
 
