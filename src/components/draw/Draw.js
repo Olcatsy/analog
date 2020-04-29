@@ -35,7 +35,7 @@ class Draw extends Component {
 
         <div className="canvasOuterContainer">
           <p className="prompt">Your prompt is <span>{this.state.chosenPrompt}</span>.</p>
-          <Canvas chosenPrompt={this.state.chosenPrompt}/>
+          <Canvas chosenPrompt={this.state.chosenPrompt} randomizePrompts={this.randomizePrompts}/>
         </div>
 
         <ul className="drawCopy">

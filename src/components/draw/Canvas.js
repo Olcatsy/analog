@@ -103,16 +103,25 @@ class Canvas extends Component {
     })
   }
 
+
+  // UNFINISHED WORK 
+  // newDrawing = () => {
+  //   this.props.randomizePrompts();
+    
+  // }
+
   render() {
     return (
       <div className="canvasInnerContainer">
 
         <canvas className="canvas"
-        ref='canvas' onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing} width="500" height="500"></canvas>
+        ref='canvas' onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing} onTouchStart={this.startDrawing} onTouchMove={this.draw} onTouchEnd={this.endDrawing} width="500" height="500"></canvas>
         
         <div className="canvasButtons">
 
           <button className="yellowButton" onClick={this.clear}>Clear</button>
+
+          <button className="yellowButton">New Drawing</button>
           
           <PostButton userDrawing={this.state.drawingStr} chosenPrompt={this.props.chosenPrompt}/>
         </div>

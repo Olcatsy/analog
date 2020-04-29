@@ -72,29 +72,33 @@ h5,
 h6,
 ul,
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    display: inline-block;
-    text-decoration: none;
-    color: inherit;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 button {
-    border: none;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
+}
+
+em {
+  font-style: normal;
 }
 /* END OF STRIPPING STYLES */
 
@@ -198,7 +202,7 @@ nav ul {
   margin: var(--copyMargin);
 }
 
-.homeScreen span {
+.homeScreen em {
   color: var(--accent1);
 }
 
@@ -268,7 +272,7 @@ nav ul {
   transform: translate(-10%, -10%);
 }
 
-.prompt span {
+.prompt em {
   color: var(--accent1);
   text-transform: uppercase;
 }
@@ -320,7 +324,7 @@ nav ul {
   margin: var(--copyMargin);
 }
 
-.gallery span {
+.gallery em {
   color: var(--accent3)
 }
 
