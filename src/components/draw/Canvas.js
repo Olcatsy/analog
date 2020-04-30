@@ -71,12 +71,60 @@ class Canvas extends Component {
     }
   }
 
+  startDrawingTouch = (e) => {
+    e.preventDefault();
+    const canvas = this.refs.canvas;
+    const r = canvas.getBoundingClientRect();
+    const x = e.nativeEvent.touches[0].clientX - r.left;
+    const y = e.nativeEvent.touches[0].clientY - r.top;
+    console.log(e);
+    console.log(x, y);
+
+    this.setState ({
+      isDrawing: true,
+      x: x,
+      y: y,
+    })
+  }
+
+  drawTouch = (e) => {
+    e.preventDefault();
+    const canvas = this.refs.canvas;
+    const ctx = canvas.getContext('2d');
+    const r = canvas.getBoundingClientRect();
+    const x = e.nativeEvent.touches[0].clientX - r.left;
+    const y = e.nativeEvent.touches[0].clientY - r.top;
+
+    if (this.state.isDrawing) {
+      // starts drawing a path 
+      ctx.beginPath();
+
+      // drawing a line requires two coordinates:
+      // start drawing at this coordinate (endpoint of the last event)
+      ctx.moveTo(this.state.x, this.state.y);
+      // end drawing at this coordinate (current event's coordinate)
+      ctx.lineTo(x, y);
+
+      // draws a path
+      ctx.stroke();
+
+      // updates last event's coordinates with current coordinates
+      this.setState({
+        x: x,
+        y: y,
+      })
+
+      this.captureDrawing();
+    }
+  }
+
   // end drawing
   endDrawing = () => {
     this.setState ({
       isDrawing: false,
     })
   }
+
 
   // as the user is drawing,   continuously convert the current drawing into a base64 string (plain text representation of an image) and save it in the component state
   captureDrawing = () => {
@@ -90,6 +138,7 @@ class Canvas extends Component {
       drawingStr: drawingUrl,
     })
   }
+
 
   // clears the canvas and resets drawing string in the component state
   clear = () => {
@@ -109,13 +158,14 @@ class Canvas extends Component {
   //   this.props.randomizePrompts();
     
   // }
+  //  onTouchEnd={this.endDrawing}
 
   render() {
     return (
       <div className="canvasInnerContainer">
 
         <canvas className="canvas"
-        ref='canvas' onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing} onTouchStart={this.startDrawing} onTouchMove={this.draw} onTouchEnd={this.endDrawing} width="500" height="500"></canvas>
+        ref='canvas' onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing} onTouchStart={this.startDrawingTouch} onTouchMove={this.drawTouch}  onTouchEnd={this.endDrawing} width="500" height="500">Your browser does not support canvas element</canvas>
         
         <div className="canvasButtons">
 

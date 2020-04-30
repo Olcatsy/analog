@@ -11,7 +11,7 @@ class Home extends Component {
 
           <p><em>Let’s do a creative exercise!</em>  Forget about drawing realistically, you don’t need that to be able to express yourself and have fun. Instead, you will create <em>analog drawings</em>. You will get a one-word prompt of an abstract idea (e.g. anger, depression, joy) that you have to sketch out without drawing any recognizable objects, only through shapes and lines. You can also see how other people interpreted these concepts in the Gallery! Hope you enjoy the process and find it useful for developing your visual communication skill.</p>
 
-          <p class="smallCopy">(I’ve adapted this exercise from a great book by <a href="https://www.drawright.com/">Betty Edwards</a> called <em>Drawing on the Artist Within</em>  (specifically Chapter 7). I highly recommend it if you want to improve your creative process, or if you want to learn drawing but don’t know where to start)</p>
+          <p className="smallCopy">(I’ve adapted this exercise from a great book by <a href="https://www.drawright.com/">Betty Edwards</a> called <em>Drawing on the Artist Within</em>  (specifically Chapter 7). I highly recommend it if you want to improve your creative process, or if you want to learn drawing but don’t know where to start)</p>
 
           <button className="startButton yellowButton" value="draw" onClick={this.props.startDrawing}>Let's draw</button>
 
