@@ -35,6 +35,7 @@ class Canvas extends Component {
 
   // start drawing
   startDrawing = (e) => {
+    e.preventDefault();
     const canvas = this.refs.canvas;
     const r = canvas.getBoundingClientRect(); // gets canvas size and position relative to the viewport
     let x;
@@ -42,7 +43,7 @@ class Canvas extends Component {
 
     // check event type
     if (e.type === "touchstart") {
-      e.preventDefault();
+      
       // gets event coordinates relative to the canvas. clientX is event coordinate relative to the viewport. r.left is canvas' offset relative to the viewport
       x = e.nativeEvent.touches[0].clientX - r.left; 
       y = e.nativeEvent.touches[0].clientY - r.top;
@@ -60,6 +61,7 @@ class Canvas extends Component {
 
   // drawing 
   draw = (e) => {
+    e.preventDefault();
     const canvas = this.refs.canvas;
     const ctx = canvas.getContext('2d');
     const r = canvas.getBoundingClientRect();
@@ -67,10 +69,9 @@ class Canvas extends Component {
     let y;
 
     if (this.state.isDrawing) {
-      
+
       // check event type
       if (e.type === "touchmove") {
-        e.preventDefault();
         x = e.nativeEvent.touches[0].clientX - r.left;
         y = e.nativeEvent.touches[0].clientY - r.top;
       } else {
