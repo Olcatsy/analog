@@ -23,6 +23,13 @@ class Canvas extends Component {
     const canvas = this.refs.canvas;
     // sets up canvas context
     const ctx = canvas.getContext('2d');
+    ctx.canvas.width = 500;
+    ctx.canvas.height = 500;
+    if (window.innerWidth < 500) {
+      ctx.canvas.width = window.innerWidth -10;
+      ctx.canvas.height = window.innerWidth -10;
+    }
+
 
     // stroke style
     ctx.strokeStyle = 'black';
@@ -150,8 +157,7 @@ class Canvas extends Component {
 
         <canvas className="canvas"
         ref='canvas' 
-        onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing} onTouchStart={this.startDrawing} onTouchMove={this.draw} onTouchEnd={this.endDrawing} 
-        width="500" height="500">
+        onMouseDown={this.startDrawing} onMouseMove={this.draw} onMouseUp={this.endDrawing} onMouseLeave={this.endDrawing} onTouchStart={this.startDrawing} onTouchMove={this.draw} onTouchEnd={this.endDrawing}>
           Your browser does not support canvas element
         </canvas>
         
