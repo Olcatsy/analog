@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#Analog
-=======
 # Analog
->>>>>>> d1a0e417ce7a55c5764e074dffc5b565813fb4ca
 
 ## Concept
 A creativity exercise that gives you a one word prompt of an abstract concept that you have to sketch without drawing recognizable objects (an analog drawing). The user can share their art to a public gallery and see how other people interpreted these concepts.<br />
@@ -38,7 +34,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-<<<<<<< HEAD
-
-=======
->>>>>>> d1a0e417ce7a55c5764e074dffc5b565813fb4ca
