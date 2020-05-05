@@ -291,7 +291,7 @@ nav ul {
   display: flex;
 }
 
-.canvasButtons button {
+.canvasButton {
   margin: 0 10px;
 }
 
@@ -428,13 +428,20 @@ footer a {
   }
 
   .prompt {
-    transform: initial;
+    position: static;
+    width: 100%;
+    transform: translate(0, 0);
+    padding: 30px;
   }
 
   .drawCopy {
     width: 100%;
     margin: 60px 20px 0;
     text-align: justify;
+  }
+
+  .canvasButton {
+    align-self: stretch;
   }
 
   /* GALLERY */

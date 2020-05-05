@@ -163,11 +163,11 @@ class Canvas extends Component {
         
         <div className="canvasButtons">
 
-          <button className="yellowButton" onClick={this.clear}>Clear</button>
+          <button className="yellowButton canvasButton" onClick={this.clear}>Clear</button>
 
-          <button className="yellowButton">New Drawing</button>
+          <button className="yellowButton canvasButton">New Drawing</button>
           
-          <PostButton userDrawing={this.state.drawingStr} chosenPrompt={this.props.chosenPrompt}/>
+          <PostButton className="canvasButton" userDrawing={this.state.drawingStr} chosenPrompt={this.props.chosenPrompt}/>
         </div>
       </div>
     );

@@ -55,7 +55,7 @@ class PostButton extends Component {
   render() {
     return (
       <div className="post">
-        <button className="postButton yellowButton" onClick={this.pushToDb}>Post</button>
+        <button className="yellowButton canvasButton" onClick={this.pushToDb}>Post</button>
 
         {
           this.state.showModal 
