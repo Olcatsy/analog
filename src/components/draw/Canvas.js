@@ -37,7 +37,7 @@ class Canvas extends Component {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     // size of the stroke
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 10;
   }
 
   // start drawing
