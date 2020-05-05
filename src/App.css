@@ -57,6 +57,7 @@ body {
   background-image: linear-gradient(to bottom right, var(--primary),  var(--secondary));
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 /* END OF BASE STYLES */
 
@@ -285,6 +286,7 @@ nav ul {
 .canvas {
   background: white;
   margin: 40px 0 20px;
+  touch-action: none;
 }
 
 .canvasButtons {
