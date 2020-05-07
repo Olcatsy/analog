@@ -329,6 +329,19 @@ nav ul {
   color: var(--accent3)
 }
 
+.galleryPreloader {
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  border: 7px solid #DCD9D9;
+  border-top-color: #FFFF6B;
+  border-bottom-color: #6BFFFF;
+  border-left-color: #FF6BFF;
+  border-radius: 50%;
+  animation: spin 1.5s ease-in-out infinite;
+  margin: 0 auto;
+}
+
 .galleryGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -384,6 +397,18 @@ footer a {
     transform: scale(1.1);
   }
 /* END OF FOOTER STYLES */
+
+
+/* KEYFRAMES */
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* END OF KEYFRAMES */
 
 
 /* MEDIA QUERIES */

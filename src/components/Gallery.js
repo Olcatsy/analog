@@ -10,6 +10,7 @@ class Gallery extends Component {
 
     this.state = {
       drawings: [],
+      isLoading: true,
     }        
   }
 
@@ -26,11 +27,12 @@ class Gallery extends Component {
       const imgArr = [];
 
       for (let key in dataFromDb) {
-        imgArr.push(dataFromDb[key]);
+        imgArr.unshift(dataFromDb[key]);
       }
 
       this.setState ({
         drawings: imgArr,
+        isLoading: false,
       })
     })
   }
@@ -40,18 +42,23 @@ class Gallery extends Component {
       <div className="gallery">
         <p>It’s really interesting to compare your analog drawings with the ones done by other people. Do their renditions of the same concept look like yours? You might see some similarities, yet every drawing has its own unique characteristics. Although we all experience roughly the same emotions, the intensity and quality of these emotions is different between individuals. <em>Your drawing makes your emotions visible.</em></p>
 
-        <div className="galleryGrid">
-      
-          {this.state.drawings.map( (item, i) => {
-            return (
-              <div className="userDrawing">
-                <img src={item.imgString} alt={item.prompt} key={i}></img>
-                <p>{item.prompt}</p>
-              </div>
-            )
-          })}
-
-        </div>
+        {
+          this.state.isLoading
+          ? 
+          <div className="galleryPreloader"></div>
+          : 
+          <div className="galleryGrid">
+            {this.state.drawings.map( (item, i) => {
+              return (
+                <div className="userDrawing">
+                  <img src={item.imgString} alt={item.prompt} key={i}></img>
+                  <p>{item.prompt}</p>
+                </div>
+              )
+            })}
+          </div>
+        }
+        
       </div>
     );
   }
