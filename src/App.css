@@ -339,7 +339,7 @@ nav ul {
   border-left-color: #FF6BFF;
   border-radius: 50%;
   animation: spin 1.5s ease-in-out infinite;
-  margin: 0 auto;
+  margin: 2em auto;
 }
 
 .galleryGrid {
