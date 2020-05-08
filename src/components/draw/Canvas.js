@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import PostButton from './PostButton';
+import NewDrawingButton from './NewDrawingButton';
+import ClearButton from './ClearButton';
 
 
 
@@ -143,13 +145,11 @@ class Canvas extends Component {
     })
   }
 
-
-  // UNFINISHED WORK 
-  // newDrawing = () => {
-  //   this.props.randomizePrompts();
-    
-  // }
-  //  onTouchEnd={this.endDrawing}
+  // clear the canvas and start a new drawing
+  newDrawing = () => {
+    this.props.randomizePrompts();
+    this.clear(); 
+  }
 
   render() {
     return (
@@ -163,9 +163,9 @@ class Canvas extends Component {
         
         <div className="canvasButtons">
 
-          <button className="yellowButton canvasButton" onClick={this.clear}>Clear</button>
+          <ClearButton className="canvasButton" clear={this.clear}/>
 
-          <button className="yellowButton canvasButton">New Drawing</button>
+          <NewDrawingButton className="canvasButton" newDrawing={this.newDrawing}/>
           
           <PostButton className="canvasButton" userDrawing={this.state.drawingStr} chosenPrompt={this.props.chosenPrompt}/>
         </div>
