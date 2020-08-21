@@ -16,7 +16,7 @@ class App extends Component {
     super();
 
     this.state = {
-      currentPage: "draw",
+      currentPage: "home",
     }
   }
 
@@ -43,7 +43,9 @@ class App extends Component {
     let pageToDisplay;
 
     // nav functionality
-    if (this.state.currentPage === "draw") {
+    if (this.state.currentPage === "home") {
+      pageToDisplay = <Home />;
+    } else if (this.state.currentPage === "draw") {
       pageToDisplay = <Draw />;
     } else if (this.state.currentPage === "gallery") {
       pageToDisplay = <Gallery />;
