@@ -10,19 +10,19 @@ const Footer = () => {
       <ul>
         <li>
           {/* Website */}
-          <a href="http://olgafil.com/" aria-label="Olga's website" title="olgafil.com"><i className="fas fa-external-link-alt" aria-hidden></i></a>
+          <a aria-label="Olga's website" href="http://olgafil.com/" title="olgafil.com" target="_blank"><i className="fas fa-external-link-alt" aria-hidden="true"></i></a>
         </li>
         <li>
           {/* Twitter */}
-          <a href="https://twitter.com/OlgaFilCodes" aria-label="Olga's Twitter" title="Twitter"><i className="fab fa-twitter" aria-hidden></i></a>
+          <a aria-label="Olga's Twitter" href="https://twitter.com/OlgaFilCodes" title="Twitter" target="_blank"><i className="fab fa-twitter" aria-hidden="true"></i></a>
         </li>
         <li>
           {/* Codepen */}
-          <a href="https://codepen.io/OlgaFil" title="CodePen" aria-label="Olga's Codepen"><i className="fab fa-codepen" aria-hidden></i></a>
+          <a aria-label="Olga's Codepen" href="https://codepen.io/OlgaFil" title="CodePen" target="_blank"><i className="fab fa-codepen" aria-hidden="true"></i></a>
         </li>
         <li>
           {/* GitHub */}
-          <a href="https://github.com/Olcatsy" aria-label="Olga's GitHub" title="GitHub"><i className="fab fa-github" aria-hidden></i></a>
+          <a aria-label="Olga's GitHub" href="https://github.com/Olcatsy" title="GitHub" target="_blank"><i className="fab fa-github" aria-hidden="true"></i></a>
         </li>
       </ul>
     </footer>
