@@ -10,7 +10,7 @@ const Footer = () => {
       <ul>
         <li>
           {/* Website */}
-          <a href="http://olgafil.com/" aria-label="Olga's website" title="olgafil.com"><i className="fas fa-external-link-alt" aria-hdden></i></a>
+          <a href="http://olgafil.com/" aria-label="Olga's website" title="olgafil.com"><i className="fas fa-external-link-alt" aria-hidden></i></a>
         </li>
         <li>
           {/* Twitter */}
